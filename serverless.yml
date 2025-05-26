@@ -1,0 +1,23 @@
+org: null
+app: null
+
+service: email-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment:
+    GMAIL_USER: amarsingh.eos@gmail.com
+    GMAIL_PASS: owhbuwrytlmcqlhh
+
+plugins:
+  - serverless-offline
+
+functions:
+  sendEmail:
+    handler: handler.sendEmail
+    events:
+      - http:
+          path: send
+          method: post
+          cors: true
